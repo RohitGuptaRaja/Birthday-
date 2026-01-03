@@ -1,37 +1,22 @@
 "use client"
-
-import { useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
-
-import BirthdayIntro from "../components/screens/BirthdayIntro"
-import BirthdayWish from "../components/screens/BirthdayWish"
-import BirthdayNote from "../components/screens/BirthdayNote"
-import BirthdayPhotos from "../components/screens/BirthdayPhotos"
-import BirthdayFinal from "../components/screens/BirthdayFinal"
+import { motion } from "framer-motion"
 
 export default function Home() {
-  const [screen, setScreen] = useState(0)
-
-  const screens = [
-    <BirthdayIntro onNext={() => setScreen(1)} />,
-    <BirthdayWish onNext={() => setScreen(2)} />,
-    <BirthdayNote onNext={() => setScreen(3)} />,
-    <BirthdayPhotos onNext={() => setScreen(4)} />,
-    <BirthdayFinal />,
-  ]
-
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={screen}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          {screens[screen]}
-        </motion.div>
-      </AnimatePresence>
-    </div>
+    <main className="h-screen w-screen flex items-center justify-center">
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="glass-card text-center px-6 py-10"
+      >
+        <h1 className="text-3xl font-bold text-pink-400">
+          Birthday Surprise 🎂
+        </h1>
+        <p className="mt-3 text-gray-300">
+          Part 1 setup completed 💖
+        </p>
+      </motion.div>
+    </main>
   )
 }
