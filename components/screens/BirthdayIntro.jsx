@@ -1,12 +1,12 @@
 "use client"
-  
+
 import { motion } from "framer-motion"
 
 export default function BirthdayIntro({ onNext }) {
   return (
     <div className="text-center px-6">
       <motion.h1
-        className="text-5xl md:text-6xl font-dancing-script text-white mb-6"
+        className="text-5xl md:text-6xl text-white mb-6"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
       >
