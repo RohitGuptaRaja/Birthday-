@@ -3,13 +3,13 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-import BirthdayIntro from "@/components/screens/BirthdayIntro"
-import BirthdayCuriosity from "@/components/screens/BirthdayCuriosity"
-import BirthdayCompliments from "@/components/screens/BirthdayCompliments"
-import BirthdayBlast from "@/components/screens/BirthdayBlast"
-import BirthdayPhoto from "@/components/screens/BirthdayPhoto"
-import BirthdayNote from "@/components/screens/BirthdayNote"
-import BirthdayFinal from "@/components/screens/BirthdayFinal"
+import BirthdayIntro from "../components/screens/BirthdayIntro"
+import BirthdayCuriosity from "../components/screens/BirthdayCuriosity"
+import BirthdayCompliments from "../components/screens/BirthdayCompliments"
+import BirthdayBlast from "../components/screens/BirthdayBlast"
+import BirthdayPhoto from "../components/screens/BirthdayPhoto"
+import BirthdayNote from "../components/screens/BirthdayNote"
+import BirthdayFinal from "../components/screens/BirthdayFinal"
 
 export default function Home() {
   const [screen, setScreen] = useState(0)
