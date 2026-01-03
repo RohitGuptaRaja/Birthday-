@@ -1,15 +1,43 @@
 "use client"
+
 import { useState } from "react"
-import CakeScreen from "@/components/CakeScreen"
+import { motion, AnimatePresence } from "framer-motion"
+
+import BirthdayIntro from "@/components/screens/BirthdayIntro"
+import BirthdayCuriosity from "@/components/screens/BirthdayCuriosity"
+import BirthdayCompliments from "@/components/screens/BirthdayCompliments"
+import BirthdayBlast from "@/components/screens/BirthdayBlast"
+import BirthdayPhoto from "@/components/screens/BirthdayPhoto"
+import BirthdayNote from "@/components/screens/BirthdayNote"
+import BirthdayFinal from "@/components/screens/BirthdayFinal"
 
 export default function Home() {
-  const [screen, setScreen] = useState(1)
+  const [screen, setScreen] = useState(0)
+
+  const screens = [
+    <BirthdayIntro onNext={() => setScreen(1)} />,
+    <BirthdayCuriosity onNext={() => setScreen(2)} />,
+    <BirthdayCompliments onNext={() => setScreen(3)} />,
+    <BirthdayBlast onNext={() => setScreen(4)} />,
+    <BirthdayPhoto onNext={() => setScreen(5)} />,
+    <BirthdayNote onNext={() => setScreen(6)} />,
+    <BirthdayFinal />,
+  ]
 
   return (
-    <>
-      {screen === 1 && (
-        <CakeScreen onNext={() => setScreen(2)} />
-      )}
-    </>
+    <div className="min-h-screen flex items-center justify-center overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={screen}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.6 }}
+          className="w-full"
+        >
+          {screens[screen]}
+        </motion.div>
+      </AnimatePresence>
+    </div>
   )
 }
