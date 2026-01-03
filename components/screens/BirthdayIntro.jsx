@@ -1,38 +1,32 @@
-"use client"
 import { motion } from "framer-motion"
 
 export default function BirthdayIntro({ onNext }) {
   return (
-    <div className="h-screen flex flex-col items-center justify-center text-center px-4">
-      <motion.img
-        src="/gifs/hello.gif"
-        className="w-56 mb-6 rounded-xl"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-      />
-
+    <div className="text-center px-6">
       <motion.h1
-        className="text-4xl font-bold text-pink-400"
+        className="text-5xl md:text-6xl font-dancing-script text-white mb-6"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        Hey Anjali 💖
+        Hey Anjali 🌸
       </motion.h1>
 
       <motion.p
-        className="text-white mt-4 text-lg"
+        className="text-lg text-white/80 mb-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
       >
-        Aaj ka din thoda special hai 😌
+        Aaj ka din thoda special hai…
       </motion.p>
 
-      <button
+      <motion.button
         onClick={onNext}
-        className="mt-8 px-6 py-2 bg-pink-500 rounded-full text-white"
+        className="btn-primary"
+        whileTap={{ scale: 0.95 }}
       >
-        Start 🎁
-      </button>
+        Tap to continue 💕
+      </motion.button>
     </div>
   )
 }
