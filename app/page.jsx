@@ -1,3 +1,4 @@
+"use client"
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -12,26 +13,23 @@ export default function Home() {
   const [currentScreen, setCurrentScreen] = useState(0)
 
   const screens = [
-    <BirthdayIntro onNext={() => setCurrentScreen(1)} />,
-    <BirthdayWish onNext={() => setCurrentScreen(2)} />,
-    <BirthdayNote onNext={() => setCurrentScreen(3)} />,
-    <BirthdayPhotos onNext={() => setCurrentScreen(4)} />,
+    <BirthdayIntro next={() => setCurrentScreen(1)} />,
+    <BirthdayWish next={() => setCurrentScreen(2)} />,
+    <BirthdayNote next={() => setCurrentScreen(3)} />,
+    <BirthdayPhotos next={() => setCurrentScreen(4)} />,
     <BirthdayFinal />,
   ]
 
   return (
-    <div className="min-h-screen overflow-hidden bg-black flex items-center justify-center">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentScreen}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {screens[currentScreen]}
-        </motion.div>
-      </AnimatePresence>
-    </div>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={currentScreen}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        {screens[currentScreen]}
+      </motion.div>
+    </AnimatePresence>
   )
 }
