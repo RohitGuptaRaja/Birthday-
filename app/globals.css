@@ -1,3 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌌 Background */
+body {
+  background: radial-gradient(circle at top, #1a001f, #000);
+}
+
 /* 🎂 Cake */
 .cake {
   width: 160px;
@@ -28,6 +37,13 @@
   background: orange;
   border-radius: 50%;
   box-shadow: 0 0 20px orange;
+  animation: flicker 1s infinite;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
+  100% { transform: translateX(-50%) scale(1); }
 }
 
 /* 🔘 Buttons */
@@ -39,15 +55,8 @@
   color: white;
   box-shadow: 0 0 20px rgba(255, 100, 180, 0.6);
 }
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-body {
-  background: radial-gradient(circle at top, #1a001f, #000);
-}
-
-/* Glass card */
+/* 🪟 Glass card */
 .glass-card {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
@@ -73,7 +82,7 @@ body {
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
-/* 💖 Hearts */
+/* 💖 Floating Hearts */
 .heart {
   position: fixed;
   bottom: -20px;
