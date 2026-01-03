@@ -8,21 +8,15 @@ const quicksand = Quicksand({
 })
 
 export const metadata = {
-  title: "You are special!",
-  description:
-    "A cute little website filled with compliments, surprises, and a heartfelt message made just for you.",
+  title: "Happy Birthday Anjali 💖",
+  description: "A special birthday surprise",
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${quicksand.className} bg-black antialiased select-none`}
-      >
-        {/* 🎵 Background Music */}
+      <body className={`${quicksand.className} bg-black antialiased`}>
         <BackgroundMusic />
-
-        {/* App Content */}
         {children}
       </body>
     </html>
