@@ -12,11 +12,12 @@ export default function BirthdayPhoto({ onNext }) {
         animate={{ y: 0, opacity: 1 }}
       >
         <Image
-          src="/image1.jpg"
+          src="/images/photo1.jpg"   // ✅ CORRECT PATH
           width={300}
           height={400}
           className="rounded-xl object-cover"
           alt="Anjali"
+          priority
         />
       </motion.div>
 
@@ -24,7 +25,11 @@ export default function BirthdayPhoto({ onNext }) {
         Meri favourite tasveer ❤️
       </p>
 
-      <motion.button onClick={onNext} className="btn-primary">
+      <motion.button
+        onClick={onNext}
+        className="btn-primary"
+        whileTap={{ scale: 0.95 }}
+      >
         Last part 💌
       </motion.button>
     </div>
