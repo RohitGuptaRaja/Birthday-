@@ -6,12 +6,17 @@ export default function BackgroundMusic() {
 
   useEffect(() => {
     const play = () => {
-      audioRef.current?.play().catch(() => {})
+      audioRef.current.volume = 0.4
+      audioRef.current.play().catch(() => {})
     }
-    play()
+
     document.addEventListener("click", play)
     return () => document.removeEventListener("click", play)
   }, [])
 
-  return <audio ref={audioRef} src="/music.mp3" loop />
+  return (
+    <audio ref={audioRef} loop>
+      <source src="/music.mp3" type="audio/mpeg" />
+    </audio>
+  )
 }
