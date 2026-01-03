@@ -10,7 +10,7 @@ export default function BirthdayFinal() {
 
   return (
     <motion.div
-      className="flex flex-col items-center justify-center h-full w-full text-center px-4 relative"
+      className="flex flex-col items-center justify-center min-h-screen w-full text-center px-4 relative overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
@@ -18,44 +18,52 @@ export default function BirthdayFinal() {
       <ConfettiBlast />
 
       {/* 🎂 TITLE */}
-      <motion.h2
-        className="text-4xl md:text-5xl font-dancing-script text-white mb-8"
-        initial={{ y: -20, opacity: 0 }}
+      <motion.h1
+        className="text-4xl md:text-5xl font-dancing-script text-white mb-6"
+        initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3 }}
       >
         Happy Birthday Anjali 🎂💖
-      </motion.h2>
+      </motion.h1>
+
+      {/* 👋 HELLO GIF */}
+      <motion.img
+        src="/gifs/hello.gif"
+        alt="hello"
+        className="w-32 mb-4"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+      />
 
       {/* 📸 IMAGE STACK */}
-      <div className="relative w-64 h-64 mb-10">
-        {/* Bottom Image */}
+      <div className="relative w-72 h-80 mb-8">
+        {/* Bottom image */}
         <Image
-          src="/image2.jpg"
+          src="/images/photo2.jpg"
           fill
           className="rounded-2xl object-cover"
-          alt="second"
+          alt="photo2"
           priority
         />
 
-        {/* Top Image (slide up to remove) */}
+        {/* Top image (slide up) */}
         <AnimatePresence>
           {showTop && (
             <motion.div
               className="absolute inset-0 cursor-grab"
               drag="y"
-              dragConstraints={{ top: -200, bottom: 0 }}
+              dragConstraints={{ top: -250, bottom: 0 }}
               onDragEnd={(e, info) => {
                 if (info.offset.y < -120) setShowTop(false)
               }}
-              exit={{ y: -400, opacity: 0 }}
+              exit={{ y: -500, opacity: 0 }}
               transition={{ duration: 0.6 }}
             >
               <Image
-                src="/image1.jpg"
+                src="/images/photo1.jpg"
                 fill
                 className="rounded-2xl object-cover"
-                alt="first"
+                alt="photo1"
                 priority
               />
             </motion.div>
@@ -63,11 +71,35 @@ export default function BirthdayFinal() {
         </AnimatePresence>
       </div>
 
-      {/* 💌 FINAL TEXT */}
+      {/* 💕 HUG GIF */}
+      {!showTop && (
+        <motion.img
+          src="/gifs/hug.gif"
+          alt="hug"
+          className="w-40 mb-4"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+        />
+      )}
+
+      {/* 💌 MESSAGE */}
       <motion.p
-        className="text-2xl md:text-3xl font-dancing-script text-white mt-4"
+        className="text-2xl md:text-3xl font-dancing-script text-white"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+      >
+        You are my favorite reason to smile 😭❤️
+      </motion.p>
+
+      {/* 🎂 CAKE GIF */}
+      <motion.img
+        src="/gifs/cake.gif"
+        alt="cake"
+        className="w-28 mt-6"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.8 }}
-      >
-        How did
+      />
+    </motion.div>
+  )
+}
