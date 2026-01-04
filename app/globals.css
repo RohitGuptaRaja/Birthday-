@@ -12,15 +12,16 @@ body {
   color: white;
   overflow-x: hidden;
   position: relative;
+  font-family: inherit;
 }
 
-/* ensure content above background */
+/* Ensure content above background */
 body > * {
   position: relative;
   z-index: 2;
 }
 
-/* ✨ subtle floating hearts background */
+/* 💖 FLOATING HEARTS (BACKGROUND) */
 .heart {
   position: fixed;
   bottom: -20px;
@@ -28,8 +29,8 @@ body > * {
   height: 14px;
   background: rgba(255, 182, 193, 0.45);
   transform: rotate(45deg);
-  opacity: 0.9;
-  filter: blur(0.3px);
+  opacity: 0.85;
+  filter: blur(0.4px);
 }
 
 .heart::before,
@@ -52,30 +53,66 @@ body > * {
   top: 0;
 }
 
-/* 🪟 glass card */
+/* 🪟 GLASS CARD */
 .glass-card {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   border-radius: 20px;
-  box-shadow: 0 0 40px rgba(255,0,150,0.35);
-  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 45px rgba(255, 0, 150, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* 🎀 primary pink button */
+/* 🎀 PRIMARY BUTTON */
 .btn-primary {
   background: linear-gradient(135deg, #ff5fa2, #ff8fd4);
   padding: 14px 34px;
   border-radius: 999px;
   font-weight: 600;
   color: white;
-  box-shadow: 0 0 28px rgba(255,100,180,0.7);
-  transition: all 0.2s ease;
+  box-shadow: 0 0 28px rgba(255, 100, 180, 0.7);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 40px rgba(255,100,180,0.95);
-}@keyframes flicker {
+  box-shadow: 0 0 40px rgba(255, 100, 180, 0.95);
+}
+
+/* 🎂 CAKE */
+.cake {
+  width: 180px;
+  height: 120px;
+  background: linear-gradient(#5a3a1b, #3b220f);
+  border-radius: 0 0 22px 22px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.cake::before {
+  content: "";
+  position: absolute;
+  top: -22px;
+  width: 100%;
+  height: 34px;
+  background: #fff1dc;
+  border-radius: 22px;
+}
+
+/* 🔥 CANDLE FLAME */
+.flame {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 22px;
+  background: radial-gradient(circle, #ffd966, orange, red);
+  border-radius: 50%;
+  box-shadow: 0 0 25px orange;
+  animation: flicker 1s infinite;
+}
+
+@keyframes flicker {
   0% { transform: translateX(-50%) scale(1); }
   50% { transform: translateX(-50%) scale(1.15); }
   100% { transform: translateX(-50%) scale(1); }
