@@ -2,73 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 🌌 PREMIUM DREAMY BACKGROUND */
+/* 🌌 DREAMY PREMIUM BACKGROUND */
 body {
   min-height: 100vh;
   background:
     radial-gradient(circle at top, rgba(255, 120, 180, 0.35), transparent 40%),
-    radial-gradient(circle at bottom right, rgba(120, 80, 255, 0.35), transparent 45%),
-    linear-gradient(180deg, #0b0014 0%, #12001f 40%, #050008 100%);
+    radial-gradient(circle at bottom, rgba(120, 80, 255, 0.35), transparent 45%),
+    linear-gradient(180deg, #0b0014 0%, #12001f 45%, #050008 100%);
   color: white;
   overflow-x: hidden;
   position: relative;
-  font-family: inherit;
 }
 
-/* ✨ Soft glowing stars */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.25), transparent),
-    radial-gradient(2px 2px at 70% 20%, rgba(255,255,255,0.18), transparent),
-    radial-gradient(1.5px 1.5px at 40% 80%, rgba(255,255,255,0.2), transparent),
-    radial-gradient(1.5px 1.5px at 85% 60%, rgba(255,255,255,0.15), transparent);
-  animation: twinkle 6s infinite alternate;
-  pointer-events: none;
-  z-index: 0;
+/* ensure content above background */
+body > * {
+  position: relative;
+  z-index: 2;
 }
 
-@keyframes twinkle {
-  from { opacity: 0.6; }
-  to { opacity: 1; }
-}
-
-/* 🪟 GLASS CARD */
-.glass-card {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  backdrop-filter: blur(16px);
-  box-shadow: 0 0 50px rgba(255, 0, 150, 0.35);
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-/* 🔘 PRIMARY BUTTON */
-.btn-primary {
-  background: linear-gradient(135deg, #ff5fa2, #ff8fd4);
-  padding: 12px 28px;
-  border-radius: 999px;
-  font-weight: 600;
-  color: white;
-  box-shadow: 0 0 25px rgba(255, 100, 180, 0.65);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 35px rgba(255, 100, 180, 0.9);
-}
-
-/* 💖 FLOATING HEARTS */
+/* ✨ subtle floating hearts background */
 .heart {
   position: fixed;
   bottom: -20px;
   width: 14px;
   height: 14px;
-  background: pink;
+  background: rgba(255, 182, 193, 0.45);
   transform: rotate(45deg);
-  opacity: 0.85;
+  opacity: 0.9;
+  filter: blur(0.3px);
 }
 
 .heart::before,
@@ -77,7 +38,7 @@ body::before {
   position: absolute;
   width: 14px;
   height: 14px;
-  background: pink;
+  background: rgba(255, 182, 193, 0.45);
   border-radius: 50%;
 }
 
@@ -91,41 +52,30 @@ body::before {
   top: 0;
 }
 
-/* 🎂 CAKE */
-.cake {
-  width: 160px;
-  height: 120px;
-  background: #4b2e1e;
-  border-radius: 0 0 20px 20px;
-  position: relative;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-
-.cake::before {
-  content: "";
-  position: absolute;
-  top: -20px;
-  width: 100%;
-  height: 30px;
-  background: #fff3e0;
+/* 🪟 glass card */
+.glass-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
   border-radius: 20px;
+  box-shadow: 0 0 40px rgba(255,0,150,0.35);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* 🔥 CANDLE FLAME */
-.flame {
-  position: absolute;
-  top: -45px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 14px;
-  height: 20px;
-  background: orange;
-  border-radius: 50%;
-  box-shadow: 0 0 25px orange;
-  animation: flicker 1s infinite;
+/* 🎀 primary pink button */
+.btn-primary {
+  background: linear-gradient(135deg, #ff5fa2, #ff8fd4);
+  padding: 14px 34px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 0 28px rgba(255,100,180,0.7);
+  transition: all 0.2s ease;
 }
 
-@keyframes flicker {
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(255,100,180,0.95);
+}@keyframes flicker {
   0% { transform: translateX(-50%) scale(1); }
   50% { transform: translateX(-50%) scale(1.15); }
   100% { transform: translateX(-50%) scale(1); }
