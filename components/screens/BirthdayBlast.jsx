@@ -1,58 +1,145 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react"
 
 export default function BirthdayBlast({ onNext }) {
+  const [step, setStep] = useState(0)
   const [hearts, setHearts] = useState([])
 
+  /* 💖 continuous floating hearts */
   useEffect(() => {
-    const generated = Array.from({ length: 20 }).map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      delay: Math.random() * 2,
-      size: 10 + Math.random() * 10,
-    }))
-    setHearts(generated)
+    const interval = setInterval(() => {
+      setHearts((prev) => [
+        ...prev,
+        {
+          id: Math.random(),
+          left: Math.random() * 100,
+          size: 10 + Math.random() * 10,
+        },
+      ])
+    }, 500)
+
+    return () => clearInterval(interval)
   }, [])
 
   return (
     <div className="relative text-center px-6 overflow-hidden">
 
-      <motion.h2
-        className="text-5xl font-dancing-script text-white mb-6"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-      >
-        Surprise 🎉💖
-      </motion.h2>
-
-      <motion.p
-        className="text-white/80 text-lg mb-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
-      >
-        Ye moment sirf tumhare liye hai ✨
-      </motion.p>
-
+      {/* 💕 BACKGROUND HEARTS */}
       {hearts.map((h) => (
         <motion.div
           key={h.id}
           className="heart"
           style={{ left: `${h.left}%`, width: h.size, height: h.size }}
-          initial={{ y: "100vh", opacity: 0 }}
+          initial={{ y: "110vh", opacity: 0 }}
           animate={{ y: "-10vh", opacity: 1 }}
-          transition={{ duration: 4, delay: h.delay, repeat: Infinity }}
+          transition={{ duration: 6, ease: "linear" }}
         />
       ))}
 
-      <motion.button
-        onClick={onNext}
-        className="btn-primary mt-12 relative z-10"
+      {/* 🎂 CAKE */}
+      <motion.div
+        className="mx-auto mb-10 relative"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: "spring", stiffness: 120 }}
       >
-        Next 💕
-      </motion.button>
+        <div className="cake mx-auto">
+          {/* 🔥 Candle */}
+          {step >= 2 && <div className="flame" />}
+        </div>
+      </motion.div>
+
+      {/* 🎉 TEXT */}
+      <AnimatePresence mode="wait">
+        {step === 0 && (
+          <motion.p
+            key="step0"
+            className="text-white/80 text-lg mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            Aaj ka din thoda zyada special hai 🎂
+          </motion.p>
+        )}
+
+        {step === 1 && (
+          <motion.p
+            key="step1"
+            className="text-white/80 text-lg mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            Cake thoda decorate karte hain 😌✨
+          </motion.p>
+        )}
+
+        {step === 2 && (
+          <motion.p
+            key="step2"
+            className="text-white/80 text-lg mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            Candle light karo… wish ke saath 💖
+          </motion.p>
+        )}
+
+        {step === 3 && (
+          <motion.p
+            key="step3"
+            className="text-white/80 text-lg mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            Surpriseeeeee 🎉🎉🎉
+          </motion.p>
+        )}
+      </AnimatePresence>
+
+      {/* 🔘 BUTTONS */}
+      <div className="relative z-10">
+        {step === 0 && (
+          <motion.button
+            className="btn-primary"
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setStep(1)}
+          >
+            Decorate 🎀
+          </motion.button>
+        )}
+
+        {step === 1 && (
+          <motion.button
+            className="btn-primary"
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setStep(2)}
+          >
+            Light the candle 🔥
+          </motion.button>
+        )}
+
+        {step === 2 && (
+          <motion.button
+            className="btn-primary"
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setStep(3)}
+          >
+            Boom 🎊
+          </motion.button>
+        )}
+
+        {step === 3 && (
+          <motion.button
+            className="btn-primary"
+            whileTap={{ scale: 0.95 }}
+            onClick={onNext}
+          >
+            Next 💕
+          </motion.button>
+        )}
+      </div>
     </div>
   )
 }
