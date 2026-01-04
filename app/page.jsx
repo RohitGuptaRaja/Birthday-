@@ -25,7 +25,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-b from-[#1a001f] to-black overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center px-4 overflow-hidden relative">
       <AnimatePresence mode="wait">
         <motion.div
           key={screen}
@@ -33,7 +33,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="w-full max-w-md mx-auto"
+          className="w-full max-w-sm mx-auto text-center relative z-10"
         >
           {screens[screen]}
         </motion.div>
