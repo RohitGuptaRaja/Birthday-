@@ -25,15 +25,15 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-b from-[#1a001f] to-black">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-b from-[#1a001f] to-black overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={screen}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.6 }}
-          className="w-full"
+          exit={{ opacity: 0, y: -30 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="w-full max-w-md mx-auto"
         >
           {screens[screen]}
         </motion.div>
