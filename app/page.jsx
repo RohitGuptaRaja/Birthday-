@@ -25,7 +25,7 @@ export default function Home() {
   ]
 
   return (
-    <div className="min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-b from-[#1a001f] to-black">
       <AnimatePresence mode="wait">
         <motion.div
           key={screen}
